@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Criar conta | SS Consultoria</title>
+  <link rel="stylesheet" href="cadastro.css" />
+  <link href="https://fonts.googleapis.com/css2?family=Roboto&display=swap" rel="stylesheet">
+</head>
+<body>
+  <div class="cadastro-container">
+    <div class="form-box">
+      <img src="Imagens/Captura de tela 2025-04-15 214929.png" alt="Logo SS Consultoria" class="logo-ss">
+      <h1>Criar conta</h1>
+      <form onsubmit="return verificarSenhas()">
+        <label for="nome">Seu nome</label>
+        <input type="text" id="nome" placeholder="Nome completo" required />
+
+        <label for="email">E-mail</label>
+        <input type="email" id="email" placeholder="seuemail@exemplo.com" required />
+
+        <label for="senha">Senha</label>
+        <input type="password" id="senha" placeholder="Mínimo 6 caracteres" required />
+
+        <label for="confirmar">Confirmar senha</label>
+        <input type="password" id="confirmar" placeholder="Digite novamente a senha" required />
+
+        <button type="submit">Criar conta</button>
+      </form>
+
+      <p class="termos">
+        Ao criar uma conta, você concorda com as
+        <a href="#">Condições de Uso</a> e
+        <a href="#">Política de Privacidade</a>.
+      </p>
+
+      <hr />
+
+      <p class="login-link">Já tem uma conta? <a href="login.html">Fazer login</a></p>
+    </div>
+  </div>
+
+  <script>
+    function verificarSenhas() {
+      const nome = document.getElementById("nome").value;
+      const email = document.getElementById("email").value;
+      const senha = document.getElementById("senha").value;
+      const confirmar = document.getElementById("confirmar").value;
+  
+      if (senha !== confirmar) {
+        alert("As senhas não correspondem.");
+        return false;
+      }
+  
+      // Salvar no localStorage
+      localStorage.setItem("ss_email", email);
+      localStorage.setItem("ss_senha", senha);
+      localStorage.setItem("ss_nome", nome);
+  
+      alert("Cadastro realizado com sucesso!");
+      window.location.href = "login.html";
+      return false;
+    }
+  </script>
+</body>
+</html>

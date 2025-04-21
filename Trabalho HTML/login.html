@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Login | SS Consultoria</title>
+  <link rel="stylesheet" href="login.css" />
+  <link href="https://fonts.googleapis.com/css2?family=Roboto&display=swap" rel="stylesheet">
+</head>
+<body>
+  <div class="login-container">
+    <div class="form-box">
+      <img src="Imagens/Captura de tela 2025-04-15 214929.png" alt="Logo SS Consultoria" class="logo-ss">
+      <h1>Fazer login</h1>
+      <form onsubmit="return fazerLogin()">
+        <label for="email">E-mail</label>
+        <input type="email" id="email" placeholder="seuemail@exemplo.com" required />
+
+        <label for="senha">Senha</label>
+        <input type="password" id="senha" placeholder="Digite sua senha" required />
+
+        <button type="submit">Entrar</button>
+      </form>
+
+      <p class="ajuda">
+        <a href="#">Esqueceu a senha?</a>
+      </p>
+
+      <hr />
+
+      <p class="criar-conta">Novo por aqui? <a href="cadastro.html">Criar conta</a></p>
+    </div>
+  </div>
+
+  <script>
+    function fazerLogin() {
+      const emailDigitado = document.getElementById("email").value;
+      const senhaDigitada = document.getElementById("senha").value;
+  
+      const emailSalvo = localStorage.getItem("ss_email");
+      const senhaSalva = localStorage.getItem("ss_senha");
+  
+      if (!emailDigitado.includes("@")) {
+        alert("Insira um e-mail válido.");
+        return false;
+      }
+  
+      if (!emailSalvo || !senhaSalva) {
+        alert("Nenhuma conta foi cadastrada ainda.");
+        return false;
+      }
+  
+      if (emailDigitado === emailSalvo && senhaDigitada === senhaSalva) {
+        alert("Login bem-sucedido!");
+        window.location.href = "index.html";
+        return false;
+      } else {
+        alert("E-mail ou senha incorretos.");
+        return false;
+      }
+    }
+  </script>
+</body>
+</html>
